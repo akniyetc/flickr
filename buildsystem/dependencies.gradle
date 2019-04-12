@@ -1,0 +1,107 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    //Android libraries
+    appCompat_version = '28.0.0'
+    constraintLayout_version = '1.1.3'
+    archComponents_version = '1.1.1'
+    navigation_version = '1.0.0-alpha06'
+    glide_version = '4.7.1'
+    lottie_version = '2.1.0'
+
+    //Third party libraries
+    koin_version = '2.0.0-rc-1'
+    javaxAnnotations_version = '1.0'
+    javaxInject_version = '1'
+    retrofit_version = '2.4.0'
+    okhttp_logging_interceptor_version = '3.8.1'
+    rxAndroid_version = '2.1.0'
+    rxJava_version = '2.2.2'
+    rxBinding_version = '2.0.0'
+    rxRelay_version = '2.1.0'
+
+    //Unit Testing
+    robolectric_version = '3.8'
+    junit_version = '4.12'
+    mockito_version = '1.4.0'
+    kluent_version = '1.14'
+
+    //Acceptance Testing
+    runner_version = '1.0.2-alpha1'
+    espresso_version = '3.0.2-alpha1'
+
+    //Development
+    leakCanaryVersion = '1.5'
+
+    //Google
+    firebase_version = '16.0.7'
+    crashlytics_version = '2.9.9'
+
+    //prefs
+    prefs_version = '1.9.0'
+
+    //moxy
+    moxy_version = '1.5.5'
+
+    mainApplication = [
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            appCompat               : "com.android.support:appcompat-v7:$appCompat_version",
+            cardView                : "com.android.support:cardview-v7:$appCompat_version",
+            recyclerView            : "com.android.support:recyclerview-v7:$appCompat_version",
+            design                  : "com.android.support:design:$appCompat_version",
+            constraintLayout        : "com.android.support.constraint:constraint-layout:$constraintLayout_version",
+            androidAnnotations      : "com.android.support:support-annotations:$appCompat_version",
+            archComponents          : "android.arch.lifecycle:extensions:$archComponents_version",
+            archComponentsCompiler  : "android.arch.lifecycle:compiler:$archComponents_version",
+            glide                   : "com.github.bumptech.glide:glide:$glide_version",
+            lottie                  : "com.airbnb.android:lottie:$lottie_version",
+            koin                    : "org.koin:koin-android:$koin_version",
+            koinScope               : "org.koin:koin-android-scope:$koin_version",
+            javaxAnnotation         : "javax.annotation:jsr250-api:$javaxAnnotations_version",
+            javaxInject             : "javax.inject:javax.inject:$javaxInject_version",
+            retrofitConverter       : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
+            firebase                : "com.google.firebase:firebase-core:$firebase_version",
+            crashlytics             : "com.crashlytics.sdk.android:crashlytics:$crashlytics_version",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
+            rxJava                  : "io.reactivex.rxjava2:rxjava:$rxJava_version",
+            rxRetrofitAdapter       : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+            rxBinding               : "com.jakewharton.rxbinding2:rxbinding:$rxBinding_version",
+            rxRelay                 : "com.jakewharton.rxrelay2:rxrelay:$rxRelay_version",
+            prefs                   : "com.pixplicity.easyprefs:library:$prefs_version",
+            moxy                    : "com.arello-mobile:moxy:$moxy_version",
+            moxyCompilier           : "com.arello-mobile:moxy-compiler:$moxy_version",
+            moxyAndroid             : "com.arello-mobile:moxy-android:$moxy_version",
+            moxyAppCompat           : "com.arello-mobile:moxy-app-compat:$moxy_version",
+
+    ]
+
+    unitTesting = [
+            kotlin     : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            kotlinTest : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            robolectric: "org.robolectric:robolectric:$robolectric_version",
+            junit      : "junit:junit:$junit_version",
+            mockito    : "com.nhaarman:mockito-kotlin:$mockito_version",
+            kluent     : "org.amshove.kluent:kluent:$kluent_version",
+    ]
+
+    acceptanceTesting = [
+            testRunner        : "com.android.support.test:runner:$runner_version",
+            testRules         : "com.android.support.test:rules:$runner_version",
+            espressoCore      : "com.android.support.test.espresso:espresso-core:$espresso_version",
+            espressoIntents   : "com.android.support.test.espresso:espresso-intents:$espresso_version",
+            androidAnnotations: "com.android.support:support-annotations:$appCompat_version",
+            navigationTest    : "android.arch.navigation:navigation-testing-ktx:$navigation_version"
+    ]
+
+    development = [
+            leakCanary    : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            leakCanaryNoop: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+    ]
+}

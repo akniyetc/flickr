@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "731779340123",
+    "firebase_url": "https://flickr-36c1d.firebaseio.com",
+    "project_id": "flickr-36c1d",
+    "storage_bucket": "flickr-36c1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731779340123:android:aad382dbe02077f2",
+        "android_client_info": {
+          "package_name": "com.silence.flickr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731779340123-p6d6tm3vn30n2ipp5ilfv84fcvqqmn1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdVTT_w81X4HOFN0UTDKzSde_MjY51Zfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731779340123-p6d6tm3vn30n2ipp5ilfv84fcvqqmn1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
