@@ -1,6 +1,7 @@
 package com.silence.flickr.photos.presentation
 
 import com.arellomobile.mvp.MvpView
+import com.silence.flickr.global.system.Router
 import com.silence.flickr.photos.domain.entity.Photo
 
 interface PhotosView: MvpView {
@@ -11,4 +12,5 @@ interface PhotosView: MvpView {
     fun showMessage(message: String)
     fun showRefreshProgress(show: Boolean)
     fun showPageProgress(show: Boolean)
+    fun showFullScreen(url: String, extras: Router.Extras)
 }

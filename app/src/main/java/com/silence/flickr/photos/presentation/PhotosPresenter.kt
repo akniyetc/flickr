@@ -1,8 +1,10 @@
 package com.silence.flickr.photos.presentation
 
 import com.arellomobile.mvp.InjectViewState
+import com.silence.flickr.global.extension.url
 import com.silence.flickr.global.presentation.BasePresenter
 import com.silence.flickr.global.presentation.Paginator
+import com.silence.flickr.global.system.Router
 import com.silence.flickr.global.utils.ErrorHandler
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.domain.interactor.PhotosInteractor
@@ -65,8 +67,8 @@ class PhotosPresenter(
     fun refreshPhotos() = paginator.refresh()
     fun loadNextPage() = paginator.loadNewPage()
 
-    fun onPhotoClicked() {
-
+    fun onPhotoClicked(photo: Photo, extras: Router.Extras) {
+        viewState.showFullScreen(photo.url(), extras)
     }
 
     override fun onDestroy() {

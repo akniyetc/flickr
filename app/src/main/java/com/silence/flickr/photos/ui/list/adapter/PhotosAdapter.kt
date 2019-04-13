@@ -1,12 +1,13 @@
-package com.silence.flickr.photos.ui.adapter
+package com.silence.flickr.photos.ui.list.adapter
 
 import android.support.v7.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates3.ListDelegationAdapter
+import com.silence.flickr.global.system.Router
 import com.silence.flickr.photos.domain.entity.Photo
 
 class PhotosAdapter: ListDelegationAdapter<MutableList<Any>>() {
 
-    internal var onPhotoClickListener: (Photo) -> Unit = {}
+    internal var onPhotoClickListener: (Photo, Router.Extras) -> Unit = {_,_ ->}
     internal var onBottomReachedListener: () -> Unit = {}
 
     init {

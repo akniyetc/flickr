@@ -1,4 +1,4 @@
-package com.silence.flickr.photos.ui.adapter
+package com.silence.flickr.photos.ui.list.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

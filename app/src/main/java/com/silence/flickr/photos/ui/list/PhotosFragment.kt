@@ -1,4 +1,4 @@
-package com.silence.flickr.photos.ui
+package com.silence.flickr.photos.ui.list
 
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -8,14 +8,16 @@ import com.silence.flickr.R
 import com.silence.flickr.global.BaseFragment
 import com.silence.flickr.global.EmptyViewHolder
 import com.silence.flickr.global.extension.visible
+import com.silence.flickr.global.system.Router
 import com.silence.flickr.photos.di.Scopes
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.presentation.PhotosPresenter
 import com.silence.flickr.photos.presentation.PhotosView
-import com.silence.flickr.photos.ui.adapter.PhotosAdapter
+import com.silence.flickr.photos.ui.list.adapter.PhotosAdapter
 import kotlinx.android.synthetic.main.fragment_photos.*
 import kotlinx.android.synthetic.main.layout_zero.*
 import org.koin.android.ext.android.getKoin
+import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
 class PhotosFragment : BaseFragment(), PhotosView {
@@ -24,6 +26,8 @@ class PhotosFragment : BaseFragment(), PhotosView {
 
     private var emptyViewHolder: EmptyViewHolder? = null
     private val adapter = PhotosAdapter()
+
+    private val router: Router by inject()
 
     @InjectPresenter
     lateinit var presenter: PhotosPresenter
@@ -46,6 +50,9 @@ class PhotosFragment : BaseFragment(), PhotosView {
         recyclerView.adapter = adapter
 
         adapter.onBottomReachedListener = { presenter.loadNextPage() }
+        adapter.onPhotoClickListener = {photo, extras ->
+            presenter.onPhotoClicked(photo, extras)
+        }
 
         swipeRefreshLayout.setOnRefreshListener { presenter.refreshPhotos() }
         emptyViewHolder = EmptyViewHolder(zeroLayout) { presenter.refreshPhotos() }
@@ -82,5 +89,11 @@ class PhotosFragment : BaseFragment(), PhotosView {
 
     override fun showPageProgress(show: Boolean) {
         recyclerView.post { adapter.showProgress(show) }
+    }
+
+    override fun showFullScreen(url: String, extras: Router.Extras) {
+        activity?.let {
+            router.showPhotoFullScreen(it, url, extras)
+        }
     }
 }
