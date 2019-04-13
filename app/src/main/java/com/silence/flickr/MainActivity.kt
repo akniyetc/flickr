@@ -1,12 +1,8 @@
 package com.silence.flickr
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import com.silence.flickr.global.BaseActivity
+import com.silence.flickr.photos.ui.PhotosFragment
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity() {
+    override fun fragment() = PhotosFragment()
 }

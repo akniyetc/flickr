@@ -98,6 +98,7 @@ dependencies {
     implementation applicationDependencies.androidAnnotations
     implementation applicationDependencies.glide
     implementation applicationDependencies.lottie
+    implementation applicationDependencies.adapterDelegate
     implementation applicationDependencies.koin
     implementation applicationDependencies.koinScope
     implementation applicationDependencies.retrofit
@@ -124,7 +125,6 @@ dependencies {
     androidTestImplementation acceptanceTestDependencies.espressoCore
     androidTestImplementation acceptanceTestDependencies.espressoIntents
     androidTestImplementation acceptanceTestDependencies.androidAnnotations
-    androidTestImplementation acceptanceTestDependencies.navigationTest
 
     //Development dependencies
     debugImplementation developmentDependencies.leakCanary

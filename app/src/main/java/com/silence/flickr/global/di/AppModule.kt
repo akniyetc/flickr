@@ -1,3 +1,5 @@
 package com.silence.flickr.global.di
 
-val appModule = listOf(networkModule, utilModule)
+import com.silence.flickr.photos.di.photoModule
+
+val appModule = listOf(networkModule, utilModule, photoModule)

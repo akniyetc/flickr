@@ -3,6 +3,7 @@ package com.silence.flickr.global.extension
 import com.silence.flickr.R
 import com.silence.flickr.global.functional.Failure
 import com.silence.flickr.global.system.ResourceManager
+import com.silence.flickr.photos.domain.entity.Photo
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
@@ -26,3 +27,7 @@ fun Throwable.errorMessage(resourceManager: ResourceManager) = when (this) {
 
 
 fun String.Companion.empty() = ""
+
+fun Photo.url(): String {
+    return "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
+}

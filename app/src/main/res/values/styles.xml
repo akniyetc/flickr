@@ -48,11 +48,18 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Poster">
+    <style name="PhotoPoster">
         <item name="android:layout_width">match_parent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:transitionName">@string/movie_transition_poster</item>
+        <item name="android:transitionName">@string/transition_poster</item>
         <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">#5e5e5e</item>
+        <item name="colorAccent">#000000</item>
+        <item name="colorControlNormal">#000000</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
     </style>
 
 </resources>

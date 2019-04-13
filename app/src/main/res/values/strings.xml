@@ -22,4 +22,5 @@
 
     <!-- Animations -->
     <string name="transition_poster">posterTransition</string>
+    <string name="search_hint">Search photos</string>
 </resources>

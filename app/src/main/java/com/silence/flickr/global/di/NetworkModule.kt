@@ -3,8 +3,10 @@ package com.silence.flickr.global.di
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.silence.flickr.BuildConfig
+import com.silence.flickr.global.di.ServiceProperties.API_KEY_QUERY
+import com.silence.flickr.global.di.ServiceProperties.KEY
 import com.silence.flickr.global.di.ServiceProperties.SERVER_URL
-import com.silence.flickr.global.service.ServerService
+import com.silence.flickr.global.service.MainService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -15,13 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
     single { createOkHttpClient() }
-    single { createWebService<ServerService>(get(), SERVER_URL) }
+    single { createWebService<MainService>(get(), SERVER_URL) }
 }
 
 
 object ServiceProperties {
-    const val SERVER_URL = "http://loyalty.vps3.zed.kz/"
-    const val AUTH_HEADER = "Authorization"
+    const val SERVER_URL = "https://api.flickr.com/"
+    const val API_KEY_QUERY = "api_key"
+    const val KEY = "84b9c142602a0eef6589f196731da212"
 }
 
 fun createOkHttpClient(): OkHttpClient {
@@ -30,6 +33,7 @@ fun createOkHttpClient(): OkHttpClient {
     okHttpClientBuilder.addInterceptor { chain ->
         var request = chain.request()
         val url = request.url().newBuilder()
+            .addQueryParameter(API_KEY_QUERY, KEY)
         request = request.newBuilder()
             .url(url.build())
             .build()

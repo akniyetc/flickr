@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PhotoPoster">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:transitionName">@string/transition_poster</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+</resources>

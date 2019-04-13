@@ -7,8 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".global.BaseActivity">
 
-    <include layout="@layout/toolbar"/>
-
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
