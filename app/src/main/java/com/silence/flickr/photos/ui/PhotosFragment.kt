@@ -5,22 +5,22 @@ import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.jakewharton.rxbinding2.widget.RxTextView
 import com.silence.flickr.R
 import com.silence.flickr.global.BaseFragment
 import com.silence.flickr.global.EmptyViewHolder
+import com.silence.flickr.global.extension.closeKeyboard
 import com.silence.flickr.global.extension.visible
+import com.silence.flickr.global.system.SchedulersProvider
 import com.silence.flickr.photos.di.Scopes
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.presentation.PhotosPresenter
 import com.silence.flickr.photos.presentation.PhotosView
 import com.silence.flickr.photos.ui.adapter.PhotosAdapter
 import com.stfalcon.frescoimageviewer.ImageViewer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_photos.*
 import kotlinx.android.synthetic.main.layout_zero.*
 import org.koin.android.ext.android.getKoin
+import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.TimeUnit
 
@@ -29,6 +29,7 @@ class PhotosFragment : BaseFragment(), PhotosView {
     override val layoutRes = R.layout.fragment_photos
 
     private var emptyViewHolder: EmptyViewHolder? = null
+    private val schedulers: SchedulersProvider by inject()
 
     private val adapter = PhotosAdapter { presenter.onPhotoClicked(it) }.apply {
         onBottomReachedListener = { presenter.loadNextPage() }
@@ -50,9 +51,9 @@ class PhotosFragment : BaseFragment(), PhotosView {
     }
 
     private fun initViews() {
-        recyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = adapter
+        recyclerViewPhotos.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        recyclerViewPhotos.setHasFixedSize(true)
+        recyclerViewPhotos.adapter = adapter
 
         swipeRefreshLayout.setOnRefreshListener { presenter.refreshPhotos() }
         emptyViewHolder = EmptyViewHolder(zeroLayout) { presenter.refreshPhotos() }
@@ -61,16 +62,25 @@ class PhotosFragment : BaseFragment(), PhotosView {
 
     @SuppressLint("CheckResult")
     private fun createSearchObservable() {
-        RxTextView.textChanges(photoEditText)
-            .debounce(500, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { s -> presenter.setQuery(s.toString()) }
+        context?.let {
+            RxSearchObservable.fromSearchView(searchViewPhotos, it)
+                .debounce(300, TimeUnit.MILLISECONDS)
+                .filter { s -> s.isNotEmpty() }
+                .distinctUntilChanged()
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
+                .subscribe { s -> presenter.setQuery(s) }
+
+            RxSearchObservable.getSuggestions(searchViewPhotos)
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
+                .subscribe()
+        }
     }
 
     override fun showEmptyProgress(show: Boolean) {
         fullscreenProgressView.visible(show)
-        recyclerView.visible(!show)
+        recyclerViewPhotos.visible(!show)
         swipeRefreshLayout.post { swipeRefreshLayout.isRefreshing = false }
     }
 
@@ -85,8 +95,8 @@ class PhotosFragment : BaseFragment(), PhotosView {
     }
 
     override fun showPhotos(show: Boolean, photos: List<Photo>) {
-        recyclerView.visible(show)
-        recyclerView.post { adapter.setData(photos) }
+        recyclerViewPhotos.visible(show)
+        recyclerViewPhotos.post { adapter.setData(photos) }
     }
 
     override fun showMessage(message: String) {
@@ -98,11 +108,15 @@ class PhotosFragment : BaseFragment(), PhotosView {
     }
 
     override fun showPageProgress(show: Boolean) {
-        recyclerView.post { adapter.showProgress(show) }
+        recyclerViewPhotos.post { adapter.showProgress(show) }
     }
 
     override fun showFullScreen(url: String) {
         ImageViewer.Builder(context, arrayListOf(url)).show()
+    }
+
+    override fun hideKeyboard() {
+        closeKeyboard()
     }
 
     override fun onDestroy() {

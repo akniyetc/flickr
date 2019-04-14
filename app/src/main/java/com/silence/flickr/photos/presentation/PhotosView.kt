@@ -12,4 +12,5 @@ interface PhotosView: MvpView {
     fun showRefreshProgress(show: Boolean)
     fun showPageProgress(show: Boolean)
     fun showFullScreen(url: String)
+    fun hideKeyboard()
 }

@@ -62,6 +62,7 @@ class PhotosPresenter(
     fun setQuery(text: String) {
         this.query = text
         paginator.restart()
+        viewState.hideKeyboard()
     }
 
     fun refreshPhotos() = paginator.refresh()

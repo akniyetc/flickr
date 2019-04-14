@@ -1,5 +1,6 @@
 package com.silence.flickr.global.extension
 
+import android.support.v4.widget.CursorAdapter
 import com.silence.flickr.R
 import com.silence.flickr.global.functional.Failure
 import com.silence.flickr.global.system.ResourceManager
@@ -30,4 +31,8 @@ fun String.Companion.empty() = ""
 
 fun Photo.url(): String {
     return "https://farm$farm.staticflickr.com/$server/${id}_$secret.jpg"
+}
+
+fun CursorAdapter.getItemAsString(): String {
+    return convertToString(cursor) as String
 }

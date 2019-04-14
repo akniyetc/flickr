@@ -23,8 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".photos.ui.fullscreen.PhotoFullScreenActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+        <provider
+                android:name=".photos.presentation.SearchHistoryProvider"
+                android:authorities="com.silence.flickr.app.photos.presentation.SearchHistoryProvider" />
     </application>
 
 </manifest>
