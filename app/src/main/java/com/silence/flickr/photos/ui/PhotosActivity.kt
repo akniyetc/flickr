@@ -1,4 +1,4 @@
-package com.silence.flickr.photos.ui.list
+package com.silence.flickr.photos.ui
 
 import com.silence.flickr.global.BaseActivity
 

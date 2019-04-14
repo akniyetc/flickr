@@ -4,7 +4,6 @@ import com.silence.flickr.photos.data.PhotosRepositoryImpl
 import com.silence.flickr.photos.domain.interactor.PhotosInteractor
 import com.silence.flickr.photos.domain.repository.PhotosRepository
 import com.silence.flickr.photos.presentation.PhotosPresenter
-import com.silence.flickr.photos.ui.PhotoAnimator
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -14,7 +13,6 @@ val photoModule = module {
     scope(named(Scopes.PHOTOS)) {
         scoped { PhotosPresenter(get(), get()) }
     }
-    single { PhotoAnimator() }
 }
 
 object Scopes {

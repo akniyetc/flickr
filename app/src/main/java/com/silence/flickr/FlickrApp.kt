@@ -2,6 +2,7 @@ package com.silence.flickr
 
 import android.app.Application
 import android.content.ContextWrapper
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.pixplicity.easyprefs.library.Prefs
 import com.silence.flickr.global.di.appModule
 import com.squareup.leakcanary.LeakCanary
@@ -13,9 +14,14 @@ class FlickrApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        initFresco()
         initDI()
         initPrefs()
         initLeakDetection()
+    }
+
+    private fun initFresco() {
+        Fresco.initialize(this)
     }
 
     private fun initDI() {
