@@ -22,10 +22,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.app.searchable"
+                    android:resource="@xml/searchable"/>
         </activity>
         <provider
                 android:name=".photos.presentation.SearchHistoryProvider"
-                android:authorities="com.silence.flickr.app.photos.presentation.SearchHistoryProvider" />
+                android:authorities="com.silence.flickr.photos.presentation.SearchHistoryProvider"/>
     </application>
 
 </manifest>

@@ -63,7 +63,7 @@ class PhotosFragment : BaseFragment(), PhotosView {
     @SuppressLint("CheckResult")
     private fun createSearchObservable() {
         context?.let {
-            RxSearchObservable.fromSearchView(searchViewPhotos, it)
+            RxSearchObservable.from(searchViewPhotos, it)
                 .debounce(300, TimeUnit.MILLISECONDS)
                 .filter { s -> s.isNotEmpty() }
                 .distinctUntilChanged()
@@ -71,7 +71,7 @@ class PhotosFragment : BaseFragment(), PhotosView {
                 .observeOn(schedulers.ui())
                 .subscribe { s -> presenter.setQuery(s) }
 
-            RxSearchObservable.getSuggestions(searchViewPhotos)
+            RxSearchObservable.getSuggestionsFrom(searchViewPhotos)
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.ui())
                 .subscribe()

@@ -12,7 +12,7 @@ import io.reactivex.subjects.PublishSubject
 
 
 object RxSearchObservable {
-    fun fromSearchView(searchView: SearchView, context: Context): Observable<String> {
+    fun from(searchView: SearchView, context: Context): Observable<String> {
 
         val searchManager = context.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val componentName = ComponentName(context, PhotosActivity::class.java)
@@ -41,8 +41,8 @@ object RxSearchObservable {
         return subject
     }
 
-    fun getSuggestions(searchView: SearchView): Observable<String> {
-        val subject = PublishSubject.create<String>()
+    fun getSuggestionsFrom(searchView: SearchView): Observable<Int> {
+        val subject = PublishSubject.create<Int>()
 
         searchView.setOnSuggestionListener(object : SearchView.OnSuggestionListener {
             override fun onSuggestionSelect(position: Int): Boolean {
@@ -51,6 +51,7 @@ object RxSearchObservable {
 
             override fun onSuggestionClick(position: Int): Boolean {
                 searchView.setQuery(searchView.suggestionsAdapter.getItemAsString(), true)
+                subject.onNext(position)
                 return true
             }
         })
