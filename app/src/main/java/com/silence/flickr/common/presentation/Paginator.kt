@@ -1,4 +1,4 @@
-package com.silence.flickr.global.presentation
+package com.silence.flickr.common.presentation
 
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable

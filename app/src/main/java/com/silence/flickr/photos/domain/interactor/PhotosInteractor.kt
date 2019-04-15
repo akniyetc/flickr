@@ -1,6 +1,6 @@
 package com.silence.flickr.photos.domain.interactor
 
-import com.silence.flickr.global.system.SchedulersProvider
+import com.silence.flickr.common.system.SchedulersProvider
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.domain.repository.PhotosRepository
 import io.reactivex.Single

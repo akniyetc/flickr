@@ -43,6 +43,10 @@ class PhotosAdapter(onPhotoClickListener: (Photo) -> Unit): ListDelegationAdapte
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any?>) {
         super.onBindViewHolder(holder, position, payloads)
 
-        if (position == items.size - 5) onBottomReachedListener.invoke()
+        if (position == items.size - threshold) onBottomReachedListener.invoke()
+    }
+
+    companion object {
+        private const val threshold = 5
     }
 }

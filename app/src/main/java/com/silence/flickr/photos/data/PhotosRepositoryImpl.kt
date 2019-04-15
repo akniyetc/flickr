@@ -1,8 +1,8 @@
 package com.silence.flickr.photos.data
 
-import com.silence.flickr.global.functional.Failure.NetworkConnection
-import com.silence.flickr.global.functional.NetworkHandler
-import com.silence.flickr.global.service.MainService
+import com.silence.flickr.common.functional.Failure.NetworkConnection
+import com.silence.flickr.common.functional.NetworkHandler
+import com.silence.flickr.common.service.MainService
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.domain.repository.PhotosRepository
 import io.reactivex.Single

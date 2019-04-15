@@ -3,14 +3,15 @@ package com.silence.flickr.photos.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.silence.flickr.R
-import com.silence.flickr.global.BaseFragment
-import com.silence.flickr.global.EmptyViewHolder
-import com.silence.flickr.global.extension.closeKeyboard
-import com.silence.flickr.global.extension.visible
-import com.silence.flickr.global.system.SchedulersProvider
+import com.silence.flickr.common.BaseFragment
+import com.silence.flickr.common.EmptyViewHolder
+import com.silence.flickr.common.extension.closeKeyboard
+import com.silence.flickr.common.extension.visible
+import com.silence.flickr.common.system.SchedulersProvider
 import com.silence.flickr.photos.di.Scopes
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.presentation.PhotosPresenter
@@ -44,8 +45,8 @@ class PhotosFragment : BaseFragment(), PhotosView {
         return scope.get()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         initViews()
     }

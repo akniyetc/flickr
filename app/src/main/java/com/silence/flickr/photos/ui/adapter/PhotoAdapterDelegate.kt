@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate
 import com.silence.flickr.R
-import com.silence.flickr.global.extension.inflate
-import com.silence.flickr.global.extension.url
+import com.silence.flickr.common.extension.inflate
+import com.silence.flickr.common.extension.url
 import com.silence.flickr.photos.domain.entity.Photo
 import kotlinx.android.synthetic.main.item_photo.view.*
 

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hannesdorfmann.adapterdelegates3.AdapterDelegate
 import com.silence.flickr.R
-import com.silence.flickr.global.extension.inflate
+import com.silence.flickr.common.extension.inflate
 
 class ProgressAdapterDelegate: AdapterDelegate<MutableList<Any>>() {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {

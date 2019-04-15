@@ -1,10 +1,10 @@
 package com.silence.flickr.photos.presentation
 
 import com.arellomobile.mvp.InjectViewState
-import com.silence.flickr.global.extension.url
-import com.silence.flickr.global.presentation.BasePresenter
-import com.silence.flickr.global.presentation.Paginator
-import com.silence.flickr.global.utils.ErrorHandler
+import com.silence.flickr.common.extension.url
+import com.silence.flickr.common.presentation.BasePresenter
+import com.silence.flickr.common.presentation.Paginator
+import com.silence.flickr.common.utils.ErrorHandler
 import com.silence.flickr.photos.domain.entity.Photo
 import com.silence.flickr.photos.domain.interactor.PhotosInteractor
 
@@ -13,14 +13,6 @@ class PhotosPresenter(
     private val interactor: PhotosInteractor,
     private val errorHandler: ErrorHandler
 ) : BasePresenter<PhotosView>() {
-
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-
-        refreshPhotos()
-    }
-
-    private var query: String? = null
 
     private val paginator = Paginator(
         { interactor.getPhotos(query, it) },
@@ -31,7 +23,7 @@ class PhotosPresenter(
 
             override fun showEmptyError(show: Boolean, error: Throwable?) {
                 if (error != null) {
-                    errorHandler.proceed(error) {viewState.showEmptyError(show, it)}
+                    errorHandler.proceed(error) { viewState.showEmptyError(show, it) }
                 } else {
                     viewState.showEmptyError(show, null)
                 }
@@ -46,7 +38,7 @@ class PhotosPresenter(
             }
 
             override fun showErrorMessage(error: Throwable) {
-                errorHandler.proceed(error) {viewState.showMessage(it)}
+                errorHandler.proceed(error) { viewState.showMessage(it) }
             }
 
             override fun showRefreshProgress(show: Boolean) {
@@ -59,6 +51,14 @@ class PhotosPresenter(
         }
     )
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+
+        refreshPhotos()
+    }
+
+    private var query: String? = null
+
     fun setQuery(text: String) {
         this.query = text
         paginator.restart()
@@ -66,6 +66,7 @@ class PhotosPresenter(
     }
 
     fun refreshPhotos() = paginator.refresh()
+
     fun loadNextPage() = paginator.loadNewPage()
 
     fun onPhotoClicked(photo: Photo) {

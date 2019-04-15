@@ -1,9 +1,9 @@
-package com.silence.flickr.global.extension
+package com.silence.flickr.common.extension
 
 import android.support.v4.widget.CursorAdapter
 import com.silence.flickr.R
-import com.silence.flickr.global.functional.Failure
-import com.silence.flickr.global.system.ResourceManager
+import com.silence.flickr.common.functional.Failure
+import com.silence.flickr.common.system.ResourceManager
 import com.silence.flickr.photos.domain.entity.Photo
 import retrofit2.HttpException
 import java.net.SocketTimeoutException

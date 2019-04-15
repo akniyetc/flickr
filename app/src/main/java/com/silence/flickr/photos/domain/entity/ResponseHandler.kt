@@ -1,6 +1,8 @@
 package com.silence.flickr.photos.domain.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseHandler(
-    val photos: PhotoHandler,
-    val stat: String
+    @SerializedName("photos") val photos: PhotoHandler,
+    @SerializedName("stat") val stat: String
 )

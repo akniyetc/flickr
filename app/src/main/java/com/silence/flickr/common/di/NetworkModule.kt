@@ -1,12 +1,12 @@
-package com.silence.flickr.global.di
+package com.silence.flickr.common.di
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.silence.flickr.BuildConfig
-import com.silence.flickr.global.di.ServiceProperties.API_KEY_QUERY
-import com.silence.flickr.global.di.ServiceProperties.KEY
-import com.silence.flickr.global.di.ServiceProperties.SERVER_URL
-import com.silence.flickr.global.service.MainService
+import com.silence.flickr.common.di.ServiceProperties.API_KEY_QUERY
+import com.silence.flickr.common.di.ServiceProperties.KEY
+import com.silence.flickr.common.di.ServiceProperties.SERVER_URL
+import com.silence.flickr.common.service.MainService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -19,7 +19,6 @@ val networkModule = module {
     single { createOkHttpClient() }
     single { createWebService<MainService>(get(), SERVER_URL) }
 }
-
 
 object ServiceProperties {
     const val SERVER_URL = "https://api.flickr.com/"

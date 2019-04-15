@@ -1,4 +1,4 @@
-package com.silence.flickr.global.system
+package com.silence.flickr.common.system
 
 import android.content.Context
 import android.support.v4.content.ContextCompat

@@ -1,7 +1,7 @@
-package com.silence.flickr.global.functional
+package com.silence.flickr.common.functional
 
 import android.content.Context
-import com.silence.flickr.global.extension.networkInfo
+import com.silence.flickr.common.extension.networkInfo
 
 class NetworkHandler(private val context: Context) {
     val isConnected get() = context.networkInfo?.isConnected

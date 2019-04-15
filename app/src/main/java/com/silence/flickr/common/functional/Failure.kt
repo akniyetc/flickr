@@ -1,4 +1,4 @@
-package com.silence.flickr.global.functional
+package com.silence.flickr.common.functional
 
 sealed class Failure : RuntimeException() {
     class NetworkConnection : Failure()

@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.ContextWrapper
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.pixplicity.easyprefs.library.Prefs
-import com.silence.flickr.global.di.appModule
+import com.silence.flickr.common.di.appModule
 import com.squareup.leakcanary.LeakCanary
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

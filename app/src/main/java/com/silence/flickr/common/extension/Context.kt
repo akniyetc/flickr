@@ -1,4 +1,4 @@
-package com.silence.flickr.global.extension
+package com.silence.flickr.common.extension
 
 import android.content.Context
 import android.net.ConnectivityManager

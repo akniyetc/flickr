@@ -1,4 +1,4 @@
-package com.silence.flickr.global.di
+package com.silence.flickr.common.di
 
 import com.silence.flickr.photos.di.photoModule
 

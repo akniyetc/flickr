@@ -1,9 +1,11 @@
 package com.silence.flickr.photos.domain.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class PhotoHandler (
-    val photo: List<Photo>,
-    val page: Int,
-    val pages: Int,
-    val perpage: Int,
-    val total: Int
+    @SerializedName("page") val page: Int,
+    @SerializedName("pages") val pages: Int,
+    @SerializedName("perpage") val perPage: Int,
+    @SerializedName("total") val total: Int,
+    @SerializedName("photo") val photo: List<Photo>
 )

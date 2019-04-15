@@ -1,7 +1,7 @@
-package com.silence.flickr.global.utils
+package com.silence.flickr.common.utils
 
-import com.silence.flickr.global.system.ResourceManager
-import com.silence.flickr.global.extension.errorMessage
+import com.silence.flickr.common.system.ResourceManager
+import com.silence.flickr.common.extension.errorMessage
 
 
 class ErrorHandler(private val resourceManager: ResourceManager) {

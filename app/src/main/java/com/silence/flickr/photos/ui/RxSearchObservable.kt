@@ -5,7 +5,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.provider.SearchRecentSuggestions
 import android.support.v7.widget.SearchView
-import com.silence.flickr.global.extension.getItemAsString
+import com.silence.flickr.common.extension.getItemAsString
 import com.silence.flickr.photos.presentation.SearchHistoryProvider
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

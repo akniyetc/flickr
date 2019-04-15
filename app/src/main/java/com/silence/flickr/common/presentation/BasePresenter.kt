@@ -1,4 +1,4 @@
-package com.silence.flickr.global.presentation
+package com.silence.flickr.common.presentation
 
 import com.arellomobile.mvp.MvpPresenter
 import com.arellomobile.mvp.MvpView
