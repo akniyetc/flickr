@@ -1,7 +1,6 @@
 package com.silence.flickr.common.extension
 
 import android.app.Activity
-import android.content.Context
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -10,9 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.silence.flickr.common.BaseActivity
-import com.silence.flickr.common.BaseFragment
-import kotlinx.android.synthetic.main.activity_layout.*
 
 fun View.isVisible() = this.visibility == View.VISIBLE
 
