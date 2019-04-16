@@ -38,15 +38,6 @@ android {
         disable 'IconMissingDensityFolder'  //For testing purpose. This is safe to remove.
     }
 
-    signingConfigs {
-        debug {
-            storeFile file('../buildsystem/debug.jks')
-            storePassword 'hotspot'
-            keyAlias 'hotspotDebug'
-            keyPassword 'hotspot'
-        }
-    }
-
     buildTypes {
         debug {
             minifyEnabled false
